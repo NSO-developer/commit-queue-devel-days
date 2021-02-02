@@ -1,0 +1,27 @@
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <intf xmlns="http://com/example/intf">
+    <name>r03</name>
+    <device>r03</device>
+    <interfaces>
+      <id>0/3/0/1</id>
+      <description>ATOMIC-B</description>
+    </interfaces>
+  </intf>
+  <intf xmlns="http://com/example/intf">
+    <name>r04</name>
+    <device>r04</device>
+    <interfaces>
+      <id>0/3/0/1</id>
+      <description>ATOMIC-B</description>
+    </interfaces>
+  </intf>
+  <intf xmlns="http://com/example/intf">
+    <name>r05</name>
+    <device>r05</device>
+    <interfaces>
+      <id>0/3/0/1</id>
+      <description>ATOMIC-B</description>
+    </interfaces>
+  </intf>
+</config>
+

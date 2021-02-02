@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>NSO Portal | Commit Queues</title>
+{% endblock %}
+
+{% block content_header %}
+      <h1>
+        Rollback File(s)
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-gear"></i> Home</a></li>
+        <li><a href="#">rollbacks</a></li>
+      </ol>
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+
+             <!-- TABLE: VPNs -->
+             <div class="box">
+                <div class="box-header with-border">
+                   <h3 class="box-title">Commit Queue Details</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                   <div class="table-responsive">
+                    <table id="rollbackTable" class="table table-bordered table-hover table-striped">
+                      <thead>
+                        <tr>
+                           <th data-field="state" data-checkbox="true">Load</th>
+                           <th>r01</th>
+                           <th>r02</th>
+                           <th>r03</th>
+                           <th>r04</th>
+                           <th>r05</th>
+                           <th>r07</th>
+                           <th>r08</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                       {% for rb in cq %}
+                         
+                       <tr class="clickable-row">
+                          <td>
+                              <button type="submit" id="loadRollback" style="border:0px solid black; background-color: transparent;" class="load-rollback btn btn-default btn-transparent btn-xs"><i class="fa fa-arrow-circle-up"></i>
+                                 <div class="hidden rb_nr">{{ rb['nr'] }}</div>
+                               </button>
+                          </td>
+                          <td>{{ rb['nr']  }}</td>
+                          <td>{{ rb['filename'] }}</td>
+                          <td>{{ rb['via'] }}</td>
+                          <td>{{ rb['creator'] }}</td>
+                          <td>{{ rb['date']}}</td>
+                          <td>{{ rb['comment'] }}</td>
+                          <td>{{ rb['label'] }} </td>
+                        </tr>
+                       {% endfor %}
+                     </tbody>
+                    </table>
+                  </div>
+                  <!-- /.table-responsive -->
+                 </div>
+                 <!-- /.box-body -->
+                 <div class="box-footer clearfix">
+             
+                </div>
+                <!-- /.box-footer -->
+              </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block scripts %}
+
+
+{% endblock %}
+
+

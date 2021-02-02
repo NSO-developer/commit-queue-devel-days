@@ -1,0 +1,91 @@
+{
+    "name"   : "NSO Commit Queue Atomic",
+    "steps" : [
+       {
+         "name" : "Stop netsim device r01",
+         "cmd-type" : "cli",
+         "cmd"  : "ncs-netsim stop r01"
+       },
+       {
+         "name" : "Create Service Instances (A) [r01, r02, r03]",
+         "cmd-type" : "load merge",
+         "cmd"  : "merge",
+         "file" :  "ATOMIC-SERVICE-A.xml"
+       },
+       {
+         "name" : "Commit Changes (A)",
+         "cmd-type" : "commit",
+         "commit" : "commit-queue=async,commit-queue-atomic=false,commit-queue-error-option=continue-on-error,commit-queue-tag=ATOMIC-A",
+         "ops" : ["gather"]
+       },
+       {
+         "name" : "Create Service Instances (B) [r03, r04, r05]",
+         "cmd-type" : "load merge",
+         "cmd"  : "merge",
+         "file" :  "ATOMIC-SERVICE-B.xml"
+       },
+       {
+         "name" : "Commit Changes (B)",
+         "cmd-type" : "commit",
+         "commit" : "commit-queue=async,commit-queue-atomic=false,commit-queue-error-option=continue-on-error,commit-queue-tag=ATOMIC-B",
+         "ops" : ["gather"]
+       },
+       {
+         "name" : "Create Service Instances (C) [r05, r06]",
+         "cmd-type" : "load merge",
+         "cmd"  : "merge",
+         "file" :  "ATOMIC-SERVICE-C.xml"
+       },
+       {
+         "name" : "Commit Changes (C)",
+         "cmd-type" : "commit",
+         "commit" : "commit-queue=async,commit-queue-atomic=false,commit-queue-error-option=continue-on-error,commit-queue-tag=ATOMIC-C",
+         "ops" : ["gather"]
+       },
+       {
+         "name" : "Create Service Instances (D) [r06, r07]",
+         "cmd-type" : "load merge",
+         "cmd"  : "merge",
+         "file" :  "ATOMIC-SERVICE-D.xml"
+       },
+       {
+         "name" : "Commit Changes (D)",
+         "cmd-type" : "commit",
+         "commit" : "commit-queue=async,commit-queue-atomic=false,commit-queue-error-option=continue-on-error,commit-queue-tag=ATOMIC-D",
+         "ops" : ["gather"]
+       },
+       {
+         "name" : "Display Commit Queue(s)",
+         "cmd-type" : "display-cq-active"
+       },    
+       {
+         "name" : "Check commit queue(s)",
+         "cmd-type" : "pause",
+         "cmd"  : "pause",
+         "msg" :  "Verify commit-queue(s) and hit return to continue"
+       }, 
+       {
+         "name" : "Start up netsim device r01",
+         "cmd-type" : "cli",
+         "cmd"  : "ncs-netsim start r01"
+       },
+       {
+         "name" : "Wait for commit queues to drain",
+         "cmd-type" : "commit queue wait"       
+       },
+       {
+         "name" : "Display Commit Queue Complete",
+         "cmd-type" : "display-cq-complete"         
+       },
+       {
+         "name" : "Cleanup (delete service(s)) ",
+         "cmd-type" : "delete",
+         "cmd"  : "delete",
+         "path" : ["/intf:intf", "/base-config:base-config"]
+       },
+       {
+         "name" : "Commit Cleanup Operation(s)",
+         "cmd-type" : "commit"
+       }
+     ]
+}

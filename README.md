@@ -1,6 +1,12 @@
-# commit-que-devel-days-202
+# commit-que-devel-days-2020
 
-A few examples of how to use NSO commit queues and NSO commit queue flags
+A few examples of how to use NSO commit queues and NSO commit queue flags.
+
+This demo was created and presented by Dan Sullivan.
+
+Links to more material:
+[Presentation](https://pubhub.devnetcloud.com/media/nso/site/Slides-2020/NSODevDays2020-Demystifying-NSO-Commit-Queues.pdf)
+[Video](https://youtu.be/9pEdvZS5yE0)
 
 # Purpose
 
@@ -18,7 +24,7 @@ In order to utilize all the functionality, you will need to have (in the path)
 the following components.
 
 * NSO 5.3.2+
-* Python or 3+
+* Python 3+
 * Cisco IOS-XR NED
 
 # Build instructions
@@ -70,32 +76,39 @@ the following components.
 
 # Running the demonstration
 
-## Execute the reconcile demonstration
+## Execute the commit queue demonstration
   First start up the simulation and the netsim devices
 
+<pre>
   make start
+</pre>
 
   Properly set PYTHONPATH variable
 
+<pre>
   export $PATHPATH="$PWD/code"
+</pre>
 
-  or 
+  or
 
+<pre>
   set $PYTHONPATH="$PWD/nsop"
+</pre>
 
-  Change directory to the NSOP director and type 
- 
-  python nsop.py  
-  
+  Change directory to the NSOP director and type
+
+<pre>
+  python nsop.py
+</pre>
+
   You can log into the GUI by using the following URL
-  htpp://127.0.0.1:4000
+  http://127.0.0.1:4000
 
-  Username admin
-  Password admin
-  
+  Username/password: admin/admin
+
   Click on System and then Commit Queues
 
-  The commit queue page doesn't auto upate so you will need to refresh it to see updates.
+  NOTE! The commit queue page doesn't auto upate so you will need to refresh it to see updates.
 
 ### Step(1) List the available scenarios
 <pre>

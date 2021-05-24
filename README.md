@@ -1,5 +1,16 @@
 # commit-que-devel-days-2020
 
+> **NOTE:** We recommend that you use our new environment,
+[NSO Scenario Explorer](https://gitlab.com/nso-developer/nso-scenario-explorer),
+to discover commit queues instead of this repository. Our hope is that the
+improved tooling and more extensive scenario library will provide a better
+experience and improved knowledge.
+>
+> This repository is no longer maintained.
+>
+> Matching version of the scenarios defined in this repository are available in
+in the NSO Scenario Explorer repository.
+
 A few examples of how to use NSO commit queues and NSO commit queue flags.
 
 This demo was created and presented by Dan Sullivan.
